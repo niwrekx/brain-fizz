@@ -20,8 +20,7 @@ const ResultsPage = () => {
   }
 
   const handleReviewQuiz = () => {    
-    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true,amount}});
-   
+    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true,amount}});   
   }
 
   return (
@@ -40,9 +39,9 @@ const ResultsPage = () => {
           <p className='text-md md:text-xl text-center'>Your score: {percentageScore}%</p>
 
           <div className='flex gap-2'>
-            <button onClick={handleReviewQuiz} className='next-btn min-w-[13rem]'>Review Your Answers</button>
+            <button type='button' onClick={handleReviewQuiz} className='next-btn min-w-[13rem]'>Review Your Answers</button>
             <button 
-              // to={quizLink} 
+              type='button'
               className='cta-btn text-center min-w-[13rem]'
               onClick={handleRestartQuiz}
             >
