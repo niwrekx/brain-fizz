@@ -8,7 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 const ResultsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {name,newScore,totalQuestion,selectedAnswers, questions,amount} = location.state || {};
+  const {name,newScore,totalQuestion,selectedAnswers, questions} = location.state || {};
  
 
   const percentageScore = ((newScore / totalQuestion) * 100).toFixed(2);
@@ -20,8 +20,10 @@ const ResultsPage = () => {
   }
 
   const handleReviewQuiz = () => {    
-    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true,amount}});   
+    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true}});       
   }
+
+  
 
   return (
     <section className='generalContainer  min-w-full green-gradient  '>
@@ -38,8 +40,14 @@ const ResultsPage = () => {
           />
           <p className='text-md md:text-xl text-center'>Your score: {percentageScore}%</p>
 
-          <div className='flex gap-2'>
-            <button type='button' onClick={handleReviewQuiz} className='next-btn min-w-[13rem]'>Review Your Answers</button>
+          <div className='flexCenterAllColumn md:flex-row gap-2'>
+            <button 
+              type='button'
+              onClick={handleReviewQuiz} 
+              className='next-btn min-w-[13rem]'>
+                Review Your Answers
+            </button>
+
             <button 
               type='button'
               className='cta-btn text-center min-w-[13rem]'

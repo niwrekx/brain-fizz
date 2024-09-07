@@ -195,7 +195,7 @@ if (loading) return <Spinner />
           </Swiper>
         </div>
             
-        <div className='flexCenterEnd w-full gap-2'>
+        <div className='md:flexCenterEnd flexCenterAll w-full gap-2'>
               <button className='arrow-nav' ref={prevRef}>
                 <FiChevronLeft />Prev
               </button>
