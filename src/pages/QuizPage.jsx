@@ -102,7 +102,10 @@ const QuizPage = () => {
 const isLastQuestion = sliderIndex === questions.length;
 const currentQuestionIndex = sliderIndex - 1; // Convert to 0-based index
 const isAnswerSelected = selectedAnswers.hasOwnProperty(currentQuestionIndex);
-const isAfterLastQuestion = sliderIndex > questions.length;
+
+const btnNextEventTest = () =>{
+  console.log('next button pressed!');
+}
 
 
 if (loading) return <Spinner />
@@ -208,10 +211,11 @@ if (loading) return <Spinner />
                   className='arrow-nav'
                   ref={nextRef}  
                   disabled={!isAnswerSelected && !isReview}
-                  onClick={!isReview && isLastQuestion ? handleSubmitResults : undefined}      
+                  onClick={!isReview && isLastQuestion ? handleSubmitResults : btnNextEventTest}      
                 >
                     {isLastQuestion ?  'Submit' : 'Next' }<FiChevronRight />
                 </button>
+                
               )}
 
               
