@@ -8,7 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 const ResultsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {name,newScore,totalQuestion,selectedAnswers, questions} = location.state || {};
+  const {name,newScore,totalQuestion,selectedAnswers, questions,amount} = location.state || {};
  
 
   const percentageScore = ((newScore / totalQuestion) * 100).toFixed(2);
@@ -20,7 +20,7 @@ const ResultsPage = () => {
   }
 
   const handleReviewQuiz = () => {    
-    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true}});
+    navigate(quizLink,{state:{name,questions,selectedAnswers, isReview:true,amount}});
    
   }
 
