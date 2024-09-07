@@ -211,7 +211,17 @@ if (loading) return <Spinner />
                   className='arrow-nav'
                   ref={nextRef}  
                   disabled={!isAnswerSelected && !isReview}
-                  onClick={!isReview && isLastQuestion ? handleSubmitResults : btnNextEventTest}      
+                  // onClick={!isReview && isLastQuestion ? handleSubmitResults : btnNextEventTest}    
+                  onClick={() => {
+                    if (isReview) {
+                      // Move to the next slide in review mode
+                      nextRef.current && nextRef.current.click();
+                    } else if (isLastQuestion) {
+                      handleSubmitResults(); // Submit results if it's the last question
+                    } else {
+                      btnNextEventTest(); // Just move to the next slide in normal mode
+                    }
+                  }}   
                 >
                     {isLastQuestion ?  'Submit' : 'Next' }<FiChevronRight />
                 </button>
