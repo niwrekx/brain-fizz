@@ -66,6 +66,16 @@ const QuizPage = () => {
   } ,[difficulty,category,reviewQuestions])
 
 
+  useEffect(() => {
+    if (nextRef.current && prevRef.current) {
+      const swiper = document.querySelector('.swiper').swiper;
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.update();
+    }
+  }, [nextRef, prevRef]);
+
+
   // shuffle questions
   const shuffleArray = (array) => {
     return array.sort((() => Math.random() - 0.5));
@@ -213,13 +223,11 @@ if (loading) return <Spinner />
                   disabled={!isAnswerSelected && !isReview}
                   // onClick={!isReview && isLastQuestion ? handleSubmitResults : btnNextEventTest}    
                   onClick={() => {
-                    if (isReview) {
-                      // Move to the next slide in review mode
-                      nextRef.current && nextRef.current.click();
-                    } else if (isLastQuestion) {
-                      handleSubmitResults(); // Submit results if it's the last question
+                    if (isLastQuestion && !isReview) {
+                      handleSubmitResults();
                     } else {
-                      btnNextEventTest(); // Just move to the next slide in normal mode
+                      const swiper = document.querySelector('.swiper').swiper;
+                      swiper.slideNext();
                     }
                   }}   
                 >
